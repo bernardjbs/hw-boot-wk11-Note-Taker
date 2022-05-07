@@ -11,9 +11,8 @@ const PORT = process.env.PORT || 3001;
 // Middlewares
 app.use(express.static('public'));
 app.use(express.json());
-app.use(apiRouter);
 app.use(webRouter);
-
+app.use(apiRouter);
 
 // Use the port 3001 to connect the app to the server
 app.listen(PORT, () => 

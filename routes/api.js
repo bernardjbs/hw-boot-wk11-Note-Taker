@@ -41,11 +41,12 @@ apiRouter.post('/api/notes', (req, res) => {
 // Setting a Delete request for the route api/notes
 apiRouter.delete('/api/notes/:id', (req, res) => {
     const id = req.params.id;
-    const foundNote = notesData.find(notesData => notesData.id === id);
-  
+    let newNotes = getNotesData()
+    const foundNote = newNotes.find(newNotes => newNotes.id === id);
     if(foundNote) {
-        notesData = notesData.filter(notesData => notesData.id !== id);
-        fs.writeFileSync(notesDataPath, JSON.stringify(notesData), 'utf-8');
+        newNotes = newNotes.filter(newNotes => newNotes.id !== id);
+        console.log('notes data: ' + JSON.stringify(newNotes));
+        fs.writeFileSync(notesDataPath, JSON.stringify(newNotes), 'utf-8');
         res.status(200).json(id);
     }
     else {
