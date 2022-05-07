@@ -28,3 +28,6 @@ http://localhost:3001/
 ```
 
 Below is a short video to illustrate the usage of the note taking app, please click on the image to view: [![Start Page](./src/images/start_page.png)](https://drive.google.com/file/d/1RcxB3HCQKA3yVrKxkvo1n3q_3whaDAbu/view)
+
+## Link to deployed application
+Alternatively, a demo of the app is already deployed on [heroku](https://jb-note-taker-wk11.herokuapp.com/)
