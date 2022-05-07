@@ -1,11 +1,14 @@
+// Include external modules
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const notesDataPath = path.join(__dirname, '..', 'db', 'db.json');
-let notesData = require('../db/db.json');
 const apiRouter = express.Router();
+let notesData = require('../db/db.json');
 const {v4} = require('uuid');
 
+const notesDataPath = path.join(__dirname, '..', 'db', 'db.json');
+
+// Function to get parsed json data from file
 function getNotesData() {
     return JSON.parse(fs.readFileSync(notesDataPath, 'utf-8'));
 }
@@ -17,7 +20,6 @@ apiRouter.get('/api/notes', (req, res) => {
 
 // Setting a POST request for the route api/notes
 apiRouter.post('/api/notes', (req, res) => {
- 
     const id = v4();
     const title = req.body.title;
     const text = req.body.text;
@@ -43,7 +45,6 @@ apiRouter.delete('/api/notes/:id', (req, res) => {
   
     if(foundNote) {
         notesData = notesData.filter(notesData => notesData.id !== id);
-        console.log(notesData);
         fs.writeFileSync(notesDataPath, JSON.stringify(notesData), 'utf-8');
         res.status(200).json(id);
     }
